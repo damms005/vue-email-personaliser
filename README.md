@@ -53,6 +53,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Todo
 
+- Tree-shake unused TailwindCss styles
 - Make this readme more meaningful/easier
 - Write tests
 - Make package modular (so can be npm installed)
