@@ -2,7 +2,21 @@
 	"name": "laravue-mailer",
 	"version": "1.0.1",
 	"private": false,
-	"author": "Damilola Olowookere",
+	"author": "Damilola Olowookere <damms005@gmail.com>",
+	"homepage": "https://github.com/damms005/laravue-mailer-js#readme",
+	"description": "The Vue Web Component for formatting email message based on CSV file content. Sample backend (Laravel package): https://github.com/damms005/laravue-mailer",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/damms005/laravue-mailer-js.git"
+	},
+	"keywords": [
+		"Laravel",
+		"Email sender",
+		"TailwindCss"
+	],
+	"bugs": {
+		"url": "https://github.com/damms005/laravue-mailer-js/issues"
+	},
 	"scripts": {
 		"development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
 		"watch": "npm run development -- --watch",
