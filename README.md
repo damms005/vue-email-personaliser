@@ -53,7 +53,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Todo
 
-- Make this readme more meaningful :p)
+- Make this readme more meaningful/easier
 - Write tests
 - Make package modular (so can be npm installed)
 
