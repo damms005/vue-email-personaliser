@@ -1,6 +1,6 @@
 # laravue-mailer-js
 
-The [Vue Web Component](https://cli.vuejs.org/guide/build-targets.html#web-component) powering the awesome Laravel package: https://github.com/damms005/laravue-mailer
+[Vue Web Component](https://cli.vuejs.org/guide/build-targets.html#web-component) for formatting email message based on CSV file content. Sample backend (Laravel package): https://github.com/damms005/laravue-mailer
 
 ## Usage
 
@@ -13,8 +13,9 @@ The [Vue Web Component](https://cli.vuejs.org/guide/build-targets.html#web-compo
 ...
 <script src='dist/assets/js/app.js'></script>
 ```
-- In your code, use the custom Vue component
-``
+
+- In your code, use the custom Vue component ``
+
 ## Development
 
 If you are interested in having a dev version of this project (e.g. for customization), `cd` to the project root and run the following commands:
@@ -58,8 +59,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - Write tests
 - Make package modular (so can be npm installed)
 
-
 ## Learning resources
+
 - https://www.codementor.io/@martinaimar/web-components-with-vue-cli-3-t1bduun66
 - https://cli.vuejs.org/guide/build-targets.html#web-component
 - https://github.com/m3esma/vue-easy-tinymce (because at the moment, the official Tinymce Vue component does not work when Vue is built as web component)

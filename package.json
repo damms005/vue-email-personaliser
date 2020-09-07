@@ -4,7 +4,7 @@
 	"private": false,
 	"author": "Damilola Olowookere <damms005@gmail.com>",
 	"homepage": "https://github.com/damms005/laravue-mailer-js#readme",
-	"description": "The Vue Web Component for formatting email message based on CSV file content. Sample backend (Laravel package): https://github.com/damms005/laravue-mailer",
+	"description": "Vue Web Component for formatting email message based on CSV file content. Sample backend (Laravel package): https://github.com/damms005/laravue-mailer",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/damms005/laravue-mailer-js.git"
