@@ -10,8 +10,11 @@
 		"url": "git+https://github.com/damms005/laravue-mailer-js.git"
 	},
 	"keywords": [
-		"Laravel",
 		"Email sender",
+		"CSV Editor",
+		"TSV Editor",
+		"Vue Js",
+		"Laravel",
 		"TailwindCss"
 	],
 	"bugs": {
