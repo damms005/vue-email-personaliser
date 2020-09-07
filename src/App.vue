@@ -6,7 +6,7 @@
     </div>
     <div class="font-mono">
       <textarea
-        ref="textarea"
+        ref="editor-textarea"
         onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}"
         placeholder="paste tab-separated values here. Headers will be used as placeholder in the input textbox below..."
         class="w-full bg-gray-900 rounded text-gray-500 p-4 font-mono text-sm"
@@ -18,13 +18,7 @@
     <div class="flex-grow h-2 flex items-stretch p-5 shadow bg-white rounded">
       <div class="flex-grow flex flex-col rounded font-mono">
         <div class="w-full overflow-y-scroll rounded m-0">
-          <tinymce
-            id="d1"
-            :toolbar1="toolbar1"
-            :toolbar2="toolbar2"
-            :plugins="plugins"
-            v-model="mailTemplate"
-          ></tinymce>
+          <vue-mce v-model="mailTemplate" />
         </div>
         <div class="flex flex-row p-2 font-mono text-sm w-full">
           <input
@@ -69,18 +63,17 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueMce from "vue-mce";
 import "@/assets/css/tailwind.css";
-import tinymce from "vue-tinymce-editor";
-import { debuglog } from "util";
 import Faker from "fakergem";
+
+Vue.use(VueMce);
 
 //TODO: use sweetlaert for popoups and submit this to "built with sweetlaert"
 
 export default {
-  name: "app",
-  components: {
-    tinymce,
-  },
+  components: {},
   data() {
     return {
       postEndpoint: "",
@@ -88,30 +81,28 @@ export default {
       randomRenderedRow: 1,
       renderDescription: "",
       rawTsvData: `sn\tname\temail\tphone\taddress\n`,
-      mailTemplate: `<br>Hello, <b><i>{{name}}</i></b>.<br><br>Can we call you on <b><u>{{phone}}</u></b>?<br><br><br><br><br><br><br><br><br>`,
-      toolbar1:
-        " bold italic forecolor backcolor | link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat",
-      toolbar2: "",
-      plugins: [
-        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen",
-        "insertdatetime media nonbreaking save table contextmenu directionality",
-        "template paste textcolor colorpicker textpattern imagetools toc help emoticons hr codesample",
-      ],
+      mailTemplate: "",
       builtSampleOutput: "",
       uuid_index: 0,
       button_text: "Submit",
     };
   },
   mounted: function () {
-    console.log("inited");
+    this.mailTemplate = `<br>Hello, <b><i>{{name}}</i></b>.<br><br>Can we call you on <b><u>{{phone}}</u></b>?<br><br><br><br><br><br><br><br><br>`;
     this.evaluate_uuid_index();
     //now randomly generate stuff
     let data = this.rawTsvData;
     for (let index = 1; index <= 2; index++) {
-      // `sn\tname\temail\tphone\taddress\n`,
-      data += `${index}\t${Faker.Name.name()}\t${Faker.Internet.email()}\t${Faker.PhoneNumber.cellPhone()}\t${Faker.Address.streetAddress()}\n`;
+      data +=
+        [
+          index,
+          Faker.Name.name(),
+          Faker.Internet.email(),
+          Faker.PhoneNumber.cellPhone(),
+          Faker.Address.streetAddress(),
+        ].join("\t") + "\n";
     }
+
     this.rawTsvData = data;
 
     //display sample
@@ -121,23 +112,23 @@ export default {
       this.tsvHeaders
     );
 
-    this.$nextTick(() => {
-      this.$refs.textarea.focus();
-    });
+    this.$nextTick(
+      (() => {
+        this.$refs["editor-textarea"].focus();
+      }).bind(this)
+    );
   },
   computed: {
     splittedTrimmedDataRows: function () {
-      // debugger;
       return this.trimmedTsvData.split("\n");
     },
     trimmedTsvData: {
       get: function () {
-        // debugger;
         return this.rawTsvData.trim();
       },
       set: function () {
         //just disrupt, so that we get stuff to trigger rewrite ot template
-        this.updateCurrentlyDiaplyedSampleTemplate();
+        this.updateCurrentlyDisplayedSampleTemplate();
       },
     },
     tsvHeaders: function () {
@@ -177,29 +168,31 @@ export default {
     },
 
     randomRenderedRow: function () {
-      //just disrupt, so that we get stuff to trigger rewrite ot template
-      this.updateCurrentlyDiaplyedSampleTemplate();
+      //just disrupt, so that we get stuff to trigger rewrite of template
+      this.updateCurrentlyDisplayedSampleTemplate();
     },
 
     rawTsvData: function () {
       //just disrupt, so that we get stuff to trigger rewrite ot template
-      this.updateCurrentlyDiaplyedSampleTemplate();
+      this.updateCurrentlyDisplayedSampleTemplate();
       this.evaluate_uuid_index();
     },
   },
   methods: {
     updateRenderDescription: function () {
-      this.renderDescription = `enter the index of the row to render [key'ed index in header is ${this.uuid_index}]`;
+      this.renderDescription = `what is the index of the row to render [unique column index is ${this.uuid_index}]`;
     },
     evaluate_uuid_index: function () {
       this.uuid_index = this.tsvHeaders.indexOf(this.uuid);
       this.updateRenderDescription();
     },
-    updateCurrentlyDiaplyedSampleTemplate: function () {
+    updateCurrentlyDisplayedSampleTemplate: function () {
       //This method is used to simply force-update the currently displayed template, when
       //the @changed prop does not directly concern the template (and thus )
       //just disrupt, so that we get stuff to trigger
-      this.mailTemplate = this.mailTemplate + " ";
+
+      return;
+      // this.mailTemplate = this.mailTemplate + " ";
 
       //display sample
       // this.builtSampleOutput = this.buildMessageFromTemplate(
@@ -232,8 +225,8 @@ export default {
           finalBuild = finalBuild.replace(replacement, rawStringArray[index]);
         }
       } catch (error) {
-        //sample thing we catch here is when rawStringArray and replacementHeaders erroneously have diffrent lengths
-        console.erro(error);
+        //sample thing we catch here is when rawStringArray and replacementHeaders erroneously have different lengths
+        alert(error);
       }
       return finalBuild;
     },
@@ -273,11 +266,10 @@ export default {
       });
 
       // TODO: ensure no sending session going on - singleton sending
-      console.log("sending to", this.postEndpoint, all);
       this.button_text = "Sending...";
       postData(this.postEndpoint, all)
-        .then((data) => console.log(data)) // JSON from `response.json()` call
-        .catch((error) => console.error(error))
+        .then((data) => alert(data)) // JSON from `response.json()` call
+        .catch((error) => alert(error))
         .finally(() => (this.button_text = "Submit"));
     },
   },
