@@ -9092,7 +9092,7 @@ __webpack_require__.r(__webpack_exports__);
 
 if (typeof window !== 'undefined') {
   var currentScript = window.document.currentScript
-  if (Object({"VUE_APP_CLI_UI_URL":"","NODE_ENV":"production","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
+  if (Object({"NODE_ENV":"production","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
     var getCurrentScript = __webpack_require__("8875")
     currentScript = getCurrentScript()
 
@@ -9489,12 +9489,12 @@ function normalizeComponent (
   }
 }
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09708a26-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=8464136c&shadow
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"121dd3a4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=4e4c7449&shadow
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"flex flex-col h-screen p-5 overflow-hidden bg-blue-100",attrs:{"id":"app"}},[_vm._m(0),_c('div',{staticClass:"font-mono"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.rawTsvData),expression:"rawTsvData"}],ref:"editor-textarea",staticClass:"w-full p-4 font-mono text-sm text-gray-500 bg-gray-900 rounded",attrs:{"onkeydown":"if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}","placeholder":"paste tab-separated values here. Headers will be used as placeholder in the input textbox below...","rows":"10"},domProps:{"value":(_vm.rawTsvData)},on:{"input":function($event){if($event.target.composing){ return; }_vm.rawTsvData=$event.target.value}}})]),_c('div',{staticClass:"flex items-stretch flex-grow h-2 p-5 bg-white rounded shadow"},[_c('div',{staticClass:"flex flex-col flex-grow font-mono rounded"},[_c('div',{staticClass:"w-full m-0 overflow-y-scroll rounded"},[_c('editor',{model:{value:(_vm.mailTemplate),callback:function ($$v) {_vm.mailTemplate=$$v},expression:"mailTemplate"}})],1),_c('div',{staticClass:"flex flex-row w-full p-2 font-mono text-sm"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.postEndpoint),expression:"postEndpoint"}],staticClass:"self-stretch flex-grow w-full p-2 mr-4 text-xs border rounded",attrs:{"type":"text","placeholder":"handler url (e.g. https://app.com/users/sendmail)"},domProps:{"value":(_vm.postEndpoint)},on:{"input":function($event){if($event.target.composing){ return; }_vm.postEndpoint=$event.target.value}}}),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.uuid),expression:"uuid"}],staticClass:"self-stretch flex-grow w-full p-2 mr-4 border rounded",attrs:{"type":"text","placeholder":"enter name of unique header","title":"name of the header that is unique in the rows of data"},domProps:{"value":(_vm.uuid)},on:{"input":function($event){if($event.target.composing){ return; }_vm.uuid=$event.target.value}}}),_c('button',{staticClass:"self-stretch w-full p-3 font-serif text-xl text-blue-900 bg-blue-100 border-2 rounded hover:bg-blue-500 hover:text-white",on:{"click":function($event){return _vm.sendCustomizedEmail()}}},[_vm._v(" "+_vm._s(_vm.button_text)+" ")])])]),_c('div',{staticClass:"relative flex-grow ml-5 overflow-hidden font-mono text-xs bg-blue-100 border rounded shadow"},[_c('div',{staticClass:"p-4 text-white bg-blue-900"},[_vm._v(" Render row #: "),_c('input',{staticClass:"w-full p-2 text-blue-900 border",attrs:{"type":"number","min":"1","placeholder":_vm.renderDescription},on:{"keyup":_vm.renderThisRow}})]),_c('div',{staticClass:"absolute w-full h-full p-4 overflow-y-auto font-mono text-xs bg-blue-100 rounded text-grey-300",domProps:{"innerHTML":_vm._s(_vm.builtSampleOutput)}})])])])}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"w-full p-4 mb-5 font-mono text-3xl underline bg-white rounded shadow"},[_vm._v(" Laravue "),_c('span',{staticClass:"font-bold text-gray-500"},[_vm._v("Mailer")])])}]
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=8464136c&shadow
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=4e4c7449&shadow
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.promise.finally.js
 var es7_promise_finally = __webpack_require__("097d");
@@ -9851,26 +9851,28 @@ var tailwind = __webpack_require__("def6");
 
 // CONCATENATED MODULE: ./src/lib/faker.js
 /* harmony default export */ var faker = ({
-  Name: function Name() {
+  name: () => {
     var fakeName = ["Jack Roberts", "Chuck Norris", "Jon Doe"];
     return fakeName[getRandomInteger(0, fakeName.length)];
   },
-  Internet: function Internet() {
+  internet: () => {
     var fakeInternet = ["wannabe@example.com", "somebody@john.doe", "abc@xyz.com"];
     return fakeInternet[getRandomInteger(0, fakeInternet.length)];
   },
-  PhoneNumber: function PhoneNumber() {
+  phoneNumber: () => {
     var fakePhoneNumber = ["094 122 1938", "001 299 1223", "+001 447 1119"];
     return fakePhoneNumber[getRandomInteger(0, fakePhoneNumber.length)];
   },
-  Address: function Address() {
+  address: () => {
     var fakeAddress = ["Train Station Rd.", "Inner Memory Lane, Core Dump Ave.", "Seg Fault Station, Broadway"];
     return fakeAddress[getRandomInteger(0, fakeAddress.length)];
   }
 });
 
 function getRandomInteger(min, max) {
-  return Math.random() * (max - min) + min;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=script&lang=js&shadow
 
@@ -9955,6 +9957,7 @@ function getRandomInteger(min, max) {
   components: {
     Editor: ts
   },
+  props: ["defaultPostEndpoint"],
 
   data() {
     return {
@@ -9971,6 +9974,10 @@ function getRandomInteger(min, max) {
   },
 
   mounted: function mounted() {
+    if (this.defaultPostEndpoint) {
+      this.postEndpoint = this.defaultPostEndpoint;
+    }
+
     this.mailTemplate = `<br>Hello, <b><i>{{name}}</i></b>.<br><br>Can we call you on <b><u>{{phone}}</u></b>?<br><br><br><br><br><br><br><br><br>`;
     this.evaluate_uuid_index(); //now randomly generate stuff
 

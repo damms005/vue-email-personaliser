@@ -1,10 +1,10 @@
 {
-	"name": "laravue-mailer",
-	"version": "1.3.0",
+	"name": "vue-email-personaliser",
+	"version": "0.9.0",
 	"private": false,
 	"author": "Damilola Olowookere <damms005@gmail.com>",
 	"homepage": "https://github.com/damms005/laravue-mailer-js#readme",
-	"description": "Vue Web Component for formatting email message based on CSV file content. Sample backend (Laravel package): https://github.com/damms005/laravue-mailer",
+	"description": "Vue Web Component for formatting email message based on CSV file content. An example of a backend (Laravel package) using this package is at https://github.com/damms005/laravue-mailer",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -15,7 +15,6 @@
 		"CSV Editor",
 		"TSV Editor",
 		"Vue Js",
-		"Laravel",
 		"TailwindCss"
 	],
 	"bugs": {
@@ -23,7 +22,7 @@
 	},
 	"scripts": {
 		"serve": "vue-cli-service serve",
-		"build-web-component": "vue-cli-service build --target wc --name laravue-mailer src/App.vue --inline-vue",
+		"build-web-component": "vue-cli-service build --target wc --name vue-email-personaliser src/App.vue --inline-vue",
 		"build-report": "vue-cli-service build --report",
 		"lint": "vue-cli-service lint"
 	},

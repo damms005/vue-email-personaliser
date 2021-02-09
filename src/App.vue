@@ -75,6 +75,7 @@ import Faker from "./lib/faker";
 
 export default {
   components: { Editor },
+  props: ["defaultPostEndpoint"],
   data() {
     return {
       postEndpoint: "",
@@ -89,6 +90,9 @@ export default {
     };
   },
   mounted: function () {
+    if (this.defaultPostEndpoint) {
+      this.postEndpoint = this.defaultPostEndpoint;
+    }
     this.mailTemplate = `<br>Hello, <b><i>{{name}}</i></b>.<br><br>Can we call you on <b><u>{{phone}}</u></b>?<br><br><br><br><br><br><br><br><br>`;
     this.evaluate_uuid_index();
     //now randomly generate stuff
