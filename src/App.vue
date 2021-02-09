@@ -1,6 +1,8 @@
 <template>
-  <div id="app" class="flex flex-col h-screen bg-blue-100 p-5 overflow-hidden">
-    <div class="bg-white font-mono mb-5 p-4 rounded shadow text-3xl underline w-full">
+  <div id="app" class="flex flex-col h-screen p-5 overflow-hidden bg-blue-100">
+    <div
+      class="w-full p-4 mb-5 font-mono text-3xl underline bg-white rounded shadow"
+    >
       Laravue
       <span class="font-bold text-gray-500">Mailer</span>
     </div>
@@ -9,53 +11,55 @@
         ref="editor-textarea"
         onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}"
         placeholder="paste tab-separated values here. Headers will be used as placeholder in the input textbox below..."
-        class="w-full bg-gray-900 rounded text-gray-500 p-4 font-mono text-sm"
+        class="w-full p-4 font-mono text-sm text-gray-500 bg-gray-900 rounded"
         v-model="rawTsvData"
         rows="10"
       ></textarea>
     </div>
 
-    <div class="flex-grow h-2 flex items-stretch p-5 shadow bg-white rounded">
-      <div class="flex-grow flex flex-col rounded font-mono">
-        <div class="w-full overflow-y-scroll rounded m-0">
-          <vue-mce v-model="mailTemplate" />
+    <div class="flex items-stretch flex-grow h-2 p-5 bg-white rounded shadow">
+      <div class="flex flex-col flex-grow font-mono rounded">
+        <div class="w-full m-0 overflow-y-scroll rounded">
+          <editor v-model="mailTemplate" />
         </div>
-        <div class="flex flex-row p-2 font-mono text-sm w-full">
+        <div class="flex flex-row w-full p-2 font-mono text-sm">
           <input
             v-model="postEndpoint"
             type="text"
-            class="p-2 flex-grow self-stretch w-full rounded border mr-4 text-xs"
+            class="self-stretch flex-grow w-full p-2 mr-4 text-xs border rounded"
             placeholder="handler url (e.g. https://app.com/users/sendmail)"
           />
           <input
             v-model="uuid"
             type="text"
-            class="p-2 flex-grow self-stretch w-full rounded border mr-4"
+            class="self-stretch flex-grow w-full p-2 mr-4 border rounded"
             placeholder="enter name of unique header"
             title="name of the header that is unique in the rows of data"
           />
           <button
             @click="sendCustomizedEmail()"
-            class="font-serif self-stretch text-xl w-full border-2 bg-blue-100 hover:bg-blue-500 text-blue-900 hover:text-white p-3 rounded"
-          >{{button_text}}</button>
+            class="self-stretch w-full p-3 font-serif text-xl text-blue-900 bg-blue-100 border-2 rounded hover:bg-blue-500 hover:text-white"
+          >
+            {{ button_text }}
+          </button>
         </div>
       </div>
       <div
-        class="flex-grow relative overflow-hidden bg-blue-100 text-xs shadow font-sans border rounded ml-5 font-mono"
+        class="relative flex-grow ml-5 overflow-hidden font-mono text-xs bg-blue-100 border rounded shadow"
       >
-        <div class="bg-blue-900 text-white p-4">
+        <div class="p-4 text-white bg-blue-900">
           Render row #:
           <input
             type="number"
             min="1"
             @keyup="renderThisRow"
-            class="text-blue-900 border p-2 w-full"
+            class="w-full p-2 text-blue-900 border"
             :placeholder="renderDescription"
           />
         </div>
         <div
           v-html="builtSampleOutput"
-          class="absolute h-full w-full overflow-y-auto bg-blue-100 text-grey-300 text-xs font-sans rounded p-4 font-mono"
+          class="absolute w-full h-full p-4 overflow-y-auto font-mono text-xs bg-blue-100 rounded text-grey-300"
         ></div>
       </div>
     </div>
@@ -63,17 +67,14 @@
 </template>
 
 <script>
-import Vue from "vue";
-import VueMce from "vue-mce";
+import Editor from "@tinymce/tinymce-vue";
 import "@/assets/css/tailwind.css";
-import Faker from "fakergem";
-
-Vue.use(VueMce);
+import Faker from "./lib/faker";
 
 //TODO: use sweetlaert for popoups and submit this to "built with sweetlaert"
 
 export default {
-  components: {},
+  components: { Editor },
   data() {
     return {
       postEndpoint: "",
@@ -96,10 +97,10 @@ export default {
       data +=
         [
           index,
-          Faker.Name.name(),
-          Faker.Internet.email(),
-          Faker.PhoneNumber.cellPhone(),
-          Faker.Address.streetAddress(),
+          Faker.name(),
+          Faker.internet(),
+          Faker.phoneNumber(),
+          Faker.address(),
         ].join("\t") + "\n";
     }
 
@@ -231,8 +232,6 @@ export default {
       return finalBuild;
     },
     getAllCustomizedEmails: function () {
-      //loop through the pasted csv lines
-      //pass them through the formatter
       var customizedEmails = {};
 
       //start from index 1: skip the headers
@@ -260,9 +259,9 @@ export default {
       // format for display
       let demacation = "--------------------";
       this.builtSampleOutput = "";
-      Object.keys(all).forEach((key, index) => {
+      Object.values(all).forEach((value) => {
         // debugger;
-        this.builtSampleOutput += `<br>${key}<br>${demacation}<br>${all[key]}<br><br>`;
+        this.builtSampleOutput += `<br>${value}<br>${demacation}<br>${all[value]}<br><br>`;
       });
 
       // TODO: ensure no sending session going on - singleton sending
@@ -306,10 +305,6 @@ function getRandomIntInclusive(min, max) {
 </script>
 
 <style>
-@tailwind utilities;
-</style>
-
-<style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -324,5 +319,9 @@ iframe {
 
 .mce-container-body.mce-stack-layout {
   height: 70% !important;
+}
+
+.tox-notification {
+  display: none !important;
 }
 </style>

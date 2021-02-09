@@ -14,7 +14,13 @@
 <script src='dist/assets/js/app.js'></script>
 ```
 
-- In your code, use the custom Vue component ``
+This will provide you with a Vue component named `laravue-mailer`
+In your code, you can then drop this custom Vue component as `<laravue-mailer></laravue-mailer>`. This will give you a UI where you can:
+- paste csv format (first row are placeholders) inside textarea
+- type email template into a second textarea
+- randomly show build email for any of the csv data
+- click send
+
 
 ## Development
 

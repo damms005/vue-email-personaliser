@@ -5,6 +5,7 @@
 	"author": "Damilola Olowookere <damms005@gmail.com>",
 	"homepage": "https://github.com/damms005/laravue-mailer-js#readme",
 	"description": "Vue Web Component for formatting email message based on CSV file content. Sample backend (Laravel package): https://github.com/damms005/laravue-mailer",
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/damms005/laravue-mailer-js.git"
@@ -21,26 +22,24 @@
 		"url": "https://github.com/damms005/laravue-mailer-js/issues"
 	},
 	"scripts": {
-		"development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-		"watch": "npm run development -- --watch",
 		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build",
-		"lint": "vue-cli-service lint",
-		"wc": "vue-cli-service build --target wc --name laravue-mailer src/App.vue"
+		"build-web-component": "vue-cli-service build --target wc --name laravue-mailer src/App.vue --inline-vue",
+		"build-report": "vue-cli-service build --report",
+		"lint": "vue-cli-service lint"
 	},
 	"dependencies": {
-		"core-js": "^2.6.11",
-		"fakergem": "^1.0.3",
-		"loadash": "^1.0.0",
-		"tailwindcss": "^1.8.4",
-		"tinymce": "^5.4.2",
-		"vue": "^2.6.12",
-		"vue-mce": "^1.5.3"
+		"@tailwindcss/postcss7-compat": "^2.0.3",
+		"@tinymce/tinymce-vue": "^3.2.8",
+		"autoprefixer": "^9.8.6",
+		"core-js": "^2.6.12",
+		"postcss": "^7.0.35",
+		"tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
+		"vue": "^2.6.12"
 	},
 	"devDependencies": {
 		"@vue/cli-plugin-babel": "^3.12.1",
 		"@vue/cli-plugin-eslint": "^3.12.1",
-		"@vue/cli-service": "^3.12.1",
+		"@vue/cli-service": "^4.5.11",
 		"babel-eslint": "^10.1.0",
 		"eslint": "^5.16.0",
 		"eslint-plugin-vue": "^5.0.0",
