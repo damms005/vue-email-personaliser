@@ -1,10 +1,10 @@
 # laravue-mailer-js
 
-[Vue Web Component](https://cli.vuejs.org/guide/build-targets.html#web-component) for formatting email message based on CSV file content. Sample backend (Laravel package): https://github.com/damms005/laravue-mailer
+[Vue Web Component](https://cli.vuejs.org/guide/build-targets.html#web-component) for formatting email message based on CSV file content. Sample backend (Laravel package): [laravue-mailer](https://github.com/damms005/laravue-mailer)
 
 ## Usage
 
-- Link the compiled js and css files in the `dist` folder to your html file, i.e.:
+- Link the compiled js and css files in the `dist` folder to your html file, like below:
 
 ```
 <script src='dist/assets/css/app.css'></script>
