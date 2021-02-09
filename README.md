@@ -21,6 +21,7 @@ In your code, you can then drop this custom Vue component as `<laravue-mailer></
 - randomly show build email for any of the csv data
 - click send
 
+vue-cli-service build --target wc --name laravue-mailer src/App.vue --inline-vue
 
 ## Development
 
@@ -61,13 +62,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Todo
 
 - Tree-shake unused TailwindCss styles
-- Make this readme more meaningful/easier
 - Write tests
-- Make package modular (so can be npm installed)
 
 ## Learning resources
 
 - https://www.codementor.io/@martinaimar/web-components-with-vue-cli-3-t1bduun66
 - https://cli.vuejs.org/guide/build-targets.html#web-component
-- https://github.com/m3esma/vue-easy-tinymce (because at the moment, the official Tinymce Vue component does not work when Vue is built as web component)
 - https://medium.com/mounoydev/vue-component-rich-text-editor-wysiwyg-59b57052d5b3
