@@ -3,7 +3,7 @@
     <div
       class="w-full p-4 mb-5 font-mono text-3xl underline bg-white rounded shadow"
     >
-      Email
+      Vue Email
       <span class="font-bold text-gray-500">Personaliser</span>
     </div>
     <div class="font-mono">
@@ -53,6 +53,7 @@
       <div
         class="relative flex-grow ml-5 overflow-hidden font-mono text-xs bg-blue-100 border rounded shadow"
       >
+        Preview
         <div class="p-4 text-white bg-blue-900">
           Index of the row to render (defaults to randomly render any row):
           <input
