@@ -22,7 +22,7 @@
         Enter mail here (use moustache syntax to dynamically inject data from
         the input above)
         <div
-          id="divEditor"
+          ref="divEditor"
           class="inline-block w-1/2 p-5 m-0 my-5 overflow-y-auto border border-blue-300 border-solid rounded h-96"
           contenteditable="true"
           @input="updateHtml"
@@ -136,7 +136,8 @@ export default {
     this.$nextTick(
       (() => {
         this.$refs["csv-data-formatter"].focus();
-        this.divEditor = document.querySelector("#divEditor");
+        this.divEditor = this.$refs["divEditor"];
+
         this.divEditor.innerHTML = defaultTemplate;
       }).bind(this)
     );
