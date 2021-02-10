@@ -19,7 +19,8 @@
 
     <div class="flex items-stretch flex-grow h-2 p-5 bg-white rounded shadow">
       <div class="flex flex-col flex-grow my-10 font-mono rounded">
-        Enter mail here (use moustache syntax to dynamically inject data from the input above)
+        Enter mail here (use moustache syntax to dynamically inject data from
+        the input above)
         <div
           id="divEditor"
           class="inline-block w-1/2 p-5 m-0 my-5 overflow-y-auto border border-blue-300 border-solid rounded h-96"
@@ -108,8 +109,6 @@ export default {
 
     let defaultTemplate = `Hello, <b><i>{{name}}</i></b>.<br><br>Can we call you on <b><u>{{phone}}</u></b>?`;
     this.mailTemplate = defaultTemplate;
-    this.divEditor = document.querySelector("#divEditor");
-    this.divEditor.innerHTML = defaultTemplate;
 
     this.evaluate_uuid_index();
     //now randomly generate stuff
@@ -137,6 +136,8 @@ export default {
     this.$nextTick(
       (() => {
         this.$refs["csv-data-formatter"].focus();
+        this.divEditor = document.querySelector("#divEditor");
+        this.divEditor.innerHTML = defaultTemplate;
       }).bind(this)
     );
   },
