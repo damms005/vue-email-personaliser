@@ -3,6 +3,7 @@ module.exports = {
     enabled: true,
     content: [
       './src/**/*.vue',
+      './src/**/*.js',
       './src/**/*.html',
     ]
   },

@@ -3,12 +3,12 @@
 	"version": "0.9.1",
 	"private": false,
 	"author": "Damilola Olowookere <damms005@gmail.com>",
-	"homepage": "https://github.com/damms005/laravue-mailer-js#readme",
-	"description": "Vue Web Component for formatting email message based on CSV file content. An example of a backend (Laravel package) using this package is at https://github.com/damms005/laravue-mailer",
+	"homepage": "https://github.com/damms005/vue-email-personaliser#readme",
+	"description": "Vue Web Component for formatting email message based on CSV file content. An example of a backend (Laravel package) using this package is at https://github.com/damms005/laravel-personalised-email-sender",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/damms005/laravue-mailer-js.git"
+		"url": "git+https://github.com/damms005/vue-email-personaliser.git"
 	},
 	"keywords": [
 		"Email sender",
@@ -18,7 +18,7 @@
 		"TailwindCss"
 	],
 	"bugs": {
-		"url": "https://github.com/damms005/laravue-mailer-js/issues"
+		"url": "https://github.com/damms005/vue-email-personaliser/issues"
 	},
 	"scripts": {
 		"serve": "vue-cli-service serve",
@@ -28,7 +28,6 @@
 	},
 	"dependencies": {
 		"@tailwindcss/postcss7-compat": "^2.0.3",
-		"@tinymce/tinymce-vue": "^3.2.8",
 		"autoprefixer": "^9.8.6",
 		"core-js": "^2.6.12",
 		"postcss": "^7.0.35",
@@ -54,7 +53,10 @@
 			"plugin:vue/essential",
 			"eslint:recommended"
 		],
-		"rules": {},
+		"rules": {
+			"no-console": "off",
+			"no-debugger": "off"
+		},
 		"parserOptions": {
 			"parser": "babel-eslint"
 		}
